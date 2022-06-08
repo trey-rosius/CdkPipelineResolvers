@@ -4,8 +4,12 @@
 {
     "version" : "2018-05-29",
     "operation" : "PutItem",
-    "tables" : {
-      
-        "BlockedUsersDynamoDBTable": $util.toJson($blocked)
-    }
+
+     "key" : {
+        "userId" : $util.dynamodb.toDynamoDBJson($ctx.args.id),
+        "blockedUserId": $util.dynamodb.toDynamoDBJson($ctx.args.target)
+    },
+
+    "attributeValues" : $util.dynamodb.toMapValuesJson($blocked )
+   
 }
