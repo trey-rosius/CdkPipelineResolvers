@@ -1,0 +1,18 @@
+#set($creatorId= $ctx.prev.result.creatorId)
+#set($callerId= $ctx.prev.result.callerId)
+
+## if the creatorId is the callerId, no need to make the check
+#if($creatorId == $callerId)
+    #return($ctx.prev.result)
+#end
+
+{
+    "version" : "2018-05-29",
+
+    "operation" : "GetItem",
+
+    "key" : {
+        "userId" : $util.dynamodb.toDynamoDBJson($creatorId),
+        "blockedUserId" : $util.dynamodb.toDynamoDBJson($callerId)
+    }
+}

@@ -1,0 +1,10 @@
+#if($ctx.error)
+    $util.error("Unable to retrieve blocked status: ${ctx.error.message}", $ctx.error.type)
+#end
+
+## if the users aren't friends
+#if(!$ctx.result)
+    $util.unauthorized()
+#end
+
+$util.toJson($ctx.prev.result)

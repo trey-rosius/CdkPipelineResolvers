@@ -1,0 +1,17 @@
+{
+    "version" : "2018-05-29",
+
+    "operation" : "Query",
+
+    "query" : {
+        "expression": "#creatorId = :creatorId",
+        "expressionNames": {
+            "#creatorId" : "creatorId"
+        },
+        "expressionValues" : {
+            ":creatorId" : $util.dynamodb.toDynamoDBJson($ctx.prev.result.creatorId)
+        }
+    },
+
+    "index": "creator-index"
+}

@@ -1,0 +1,24 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  createPost(input: CreatePostInput!): Post!
+  blockUser(id: ID!, target: ID!): Boolean!
+}
+
+type Query {
+  getPostsByCreator(id: ID!): [Post!]!
+}
+
+type Post {
+  id: ID!
+  creatorId: ID!
+  post: String!
+}
+
+input CreatePostInput {
+  creatorId: ID!
+  post: String!
+}

@@ -1,0 +1,2 @@
+#set($result = { "creatorId": $ctx.args.id, "callerId": $ctx.identity.username })
+$util.toJson($result)

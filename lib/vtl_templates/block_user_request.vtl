@@ -1,0 +1,11 @@
+#set($blocked = { "userId" : "$ctx.args.id", "blockedUserId": "$ctx.args.target" })
+
+
+{
+    "version" : "2018-05-29",
+    "operation" : "PutItem",
+    "tables" : {
+      
+        "BlockedUsersDynamoDBTable": $util.toJson($blocked)
+    }
+}
