@@ -2,8 +2,8 @@
     $util.error("Unable to retrieve blocked status: ${ctx.error.message}", $ctx.error.type)
 #end
 
-## if the users aren't friends
-#if(!$ctx.result)
+## if the caller has been blocked
+#if($ctx.result)
     $util.unauthorized()
 #end
 
